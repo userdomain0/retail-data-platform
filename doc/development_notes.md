@@ -1,5 +1,4 @@
-# my development_notes.md
-
+# 開發日誌
 ## 2026.03.11
 - 建立 github專案 retail-data-platform
 - 申請 Supabase (Cloud Database) 並且測試連線方式(成功)
