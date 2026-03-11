@@ -16,8 +16,8 @@ The goal of this project is to demonstrate practical data engineering concepts i
 ## Dataset
 
 Dataset source:
-
-Kaggle – Grocery Sales Database
+- Kaggle – Grocery Sales Database
+- https://www.kaggle.com/datasets/andrexibiza/grocery-sales-dataset/data
 
 This dataset simulates grocery store transactions including:
 
