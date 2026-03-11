@@ -49,6 +49,7 @@ Analytics / Dashboard
 
 - Python
 - PostgreSQL (Cloud)
+- Supabase (Cloud Database)
 - Pandas
 - Streamlit
 - SQL
