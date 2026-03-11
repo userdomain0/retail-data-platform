@@ -9,3 +9,4 @@
 - 將資料庫連線資料存入 config\config.ini
 - 建立 db_connection.py
 - 建立 load_raw.py 將資料匯入db 
+- 建立 第一個資料表 raw.sales(約67萬筆資料)
