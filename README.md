@@ -73,7 +73,3 @@ Analytics Layer
         │
         ▼
 Streamlit Dashboard
-
-## Data Source
-- Kaggle / Grocery Sales Database
-- https://www.kaggle.com/datasets/andrexibiza/grocery-sales-dataset/data
