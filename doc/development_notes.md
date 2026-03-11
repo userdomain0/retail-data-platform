@@ -1,4 +1,4 @@
-# retail-data-platform
+# my development_notes.md
 
 ## 2026.03.11
 - 建立 github專案 retail-data-platform
