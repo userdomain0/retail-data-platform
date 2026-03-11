@@ -1,39 +1,23 @@
 from pathlib import Path
 import pandas as pd
-from sqlalchemy import create_engine
-import psycopg2
+from db_connection import engine
+import time
 
-user='postgres.fjfkmzhwxlzcnfoszoyh' 
- 
-host='aws-1-ap-southeast-2.pooler.supabase.com'
-port=6543
-dbname='postgres'
-psd='FXzmcMHF8nSQLa0Q' 
+start= time.time()
+BASE_DIR = Path(__file__).resolve().parent.parent
+file_path = BASE_DIR / "data" / "raw" / "sales.csv"
 
- 
-# Connect to the database
-try:
-    connection = psycopg2.connect(
-        user=user,
-        password=psd,
-        host=host,
-        port=port,
-        dbname=dbname
-    )
-    print("Connection successful!")
-    
-    # Create a cursor to execute SQL queries
-    cursor = connection.cursor()
-    
-    # Example query
-    cursor.execute("SELECT NOW();")
-    result = cursor.fetchone()
-    print("Current Time:", result)
+df = pd.read_csv(file_path) 
+engine.dispose()
+df.to_sql(
+    "sales",
+    engine,
+    if_exists="replace",
+    schema="raw",
+    index=False,
+    chunksize=10000,
+    method='multi'
+)
 
-    # Close the cursor and connection
-    cursor.close()
-    connection.close()
-    print("Connection closed.")
-
-except Exception as e:
-    print(f"Failed to connect: {e}")
+end = time.time()
+print(f'資料已完成上傳{round(end-start,0) }秒 ')
