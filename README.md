@@ -1,54 +1,78 @@
-# retail-data-platform
+# Retail Data Platform
+This project simulates a retail data platform for analyzing grocery store sales data.
 
-這是以零售業範例，所建置的數據平台DEMO
-Retail Data Platform
+The system uses the public dataset **Grocery Sales Database from Kaggle** to simulate a multi-store retail environment.
 
-Architecture
+Sales data is ingested into a cloud PostgreSQL database, processed through a Python ETL pipeline, and transformed into a data warehouse model for analytics.
 
-CSV → Python ETL → PostgreSQL → Streamlit Dashboard
-
-Features
+The goal of this project is to demonstrate practical data engineering concepts including:
 
 - Data ingestion
-- Data warehouse schema
-- Analytics SQL
-- Web dashboard
+- ETL pipeline design
+- Data warehouse modeling
+- Analytics queries
+- Dashboard visualization
 
-- 開始執行時間　2026.3.10
+## Dataset
 
-資料來源
+Dataset source:
+
+Kaggle – Grocery Sales Database
+
+This dataset simulates grocery store transactions including:
+
+- sales transactions
+- products
+- stores
+- categories
+- inventory related data
+
+
+# Infrastructure
+
+The project uses a cloud-based PostgreSQL database for data storage.
+
+Data workflow:
+
+Kaggle Dataset  
+↓  
+Python ETL  
+↓  
+Cloud PostgreSQL  
+↓  
+Data Warehouse  
+↓  
+Analytics / Dashboard
+
+
+## Tech Stack
+
+- Python
+- PostgreSQL (Cloud)
+- Pandas
+- Streamlit
+- SQL
+- GitHub
+
+
+## Data Platform Architecture
+Kaggle Dataset
+        │
+        ▼
+Python ETL
+        │
+        ▼
+Cloud PostgreSQL
+        │
+        ▼
+Data Warehouse
+        │
+        ▼
+Analytics Layer
+        │
+        ▼
+Streamlit Dashboard
+
+## Data Source
 - Kaggle / Grocery Sales Database
 - https://www.kaggle.com/datasets/andrexibiza/grocery-sales-dataset/data
-
-## Architecture 
-
-# etl 資料搬運與處理的程式
-- ETL = Extract / Transform / Load 
-
-etl/
-│
-├─ load_sales.py
-├─ import_csv.py
-├─ transform_sales.py
-└─ db_connection.py
-
-# sql 資料腳本
-sql
-│
-├─ raw
-│   └─ create_raw_sales.sql
-│
-├─ staging
-│   └─ clean_sales.sql
-│
-├─ warehouse
-│   └─ fact_sales.sql
-│
-└─ analytics
-    └─ product_ranking.sql
-
-### Python ETL
-    └ load csv → raw
-
-### Streamlit
-    └ sales dashboard
