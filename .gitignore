@@ -26,3 +26,6 @@ data/raw/
 # Build
 dist/
 build/
+
+# config
+config/config.ini
