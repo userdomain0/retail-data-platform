@@ -1,11 +1,25 @@
 # retail-data-platform
 
 這是以零售業範例，所建置的數據平台DEMO
+Retail Data Platform
 
-開始執行時間　2026.3.10
-## 資料來源
-Kaggle / Grocery Sales Database
-https://www.kaggle.com/datasets/andrexibiza/grocery-sales-dataset/data
+Architecture
+
+CSV → Python ETL → PostgreSQL → Streamlit Dashboard
+
+Features
+
+- Data ingestion
+- Data warehouse schema
+- Analytics SQL
+- Web dashboard
+
+- 開始執行時間　2026.3.10
+
+資料來源
+- Kaggle / Grocery Sales Database
+- https://www.kaggle.com/datasets/andrexibiza/grocery-sales-dataset/data
+
 ## Architecture 
 ### PostgreSQL (Supabase) 
     ├ raw
