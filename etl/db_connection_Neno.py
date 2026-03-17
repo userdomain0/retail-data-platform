@@ -1,7 +1,7 @@
 import psycopg2
 
 conn = psycopg2.connect(
-    "postgresql://neondb_owner:npg_FSAsy0jp6CrG@ep-broad-bird-a13c7d1z-pooler.ap-southeast-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require"
+    f"postgresql://neondb_owner:{psd}@ep-broad-bird-a13c7d1z-pooler.ap-southeast-1.aws.neon.tech/{dbname}?sslmode=require&channel_binding=require"
 )
 
 cur = conn.cursor()
