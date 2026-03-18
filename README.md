@@ -1,75 +1,99 @@
-# Retail Data Platform
-This project simulates a retail data platform for analyzing grocery store sales data.
+# 📊 Retail Sales Intelligence Platform
 
-The system uses the public dataset **Grocery Sales Database from Kaggle** to simulate a multi-store retail environment.
+## 📌 Project Overview
+This project builds a retail data platform to analyze grocery store sales data and generate actionable business insights.
 
-Sales data is ingested into a cloud PostgreSQL database, processed through a Python ETL pipeline, and transformed into a data warehouse model for analytics.
+It simulates a real-world data workflow from raw data ingestion to analytics and dashboard visualization.
 
-The goal of this project is to demonstrate practical data engineering concepts including:
+The goal is to demonstrate both **data engineering** and **business intelligence** capabilities.
 
-- Data ingestion
-- ETL pipeline design
-- Data warehouse modeling
-- Analytics queries
-- Dashboard visualization
+---
 
-## Dataset
+## 🎯 Business Objectives
+- Analyze sales trends across time
+- Identify top-performing products
+- Compare store performance by region
+- Detect abnormal sales patterns
 
-Dataset source:
-- Kaggle – Grocery Sales Database
-- https://www.kaggle.com/datasets/andrexibiza/grocery-sales-dataset/data
+---
 
-This dataset simulates grocery store transactions including:
+## 🛠 Tech Stack
+- Python (Pandas)
+- Microsoft SQL Server (MSSQL)
+- SQL (T-SQL)
+- Tableau
+- GitHub
 
-- sales transactions
-- products
-- stores
-- categories
-- inventory related data
+---
 
-
-# Infrastructure
-
-The project uses a cloud-based PostgreSQL database for data storage.
-
-Data workflow:
+## 🏗 Data Architecture
 
 Kaggle Dataset  
 ↓  
-Python ETL  
+Python ETL Pipeline  
 ↓  
-Cloud PostgreSQL  
+MSSQL Database (Data Warehouse)  
 ↓  
-Data Warehouse  
+SQL Analytics  
 ↓  
-Analytics / Dashboard
+Tableau Dashboard  
 
+---
 
-## Tech Stack
+## 🔄 Data Pipeline
 
-- Python
-- PostgreSQL (Cloud)
-- Supabase (Cloud Database)
-- Pandas
-- Streamlit
-- SQL
-- GitHub
+### Extract
+- Load raw CSV data from Kaggle dataset
 
+### Transform
+- Clean and preprocess data using Python (Pandas)
+- Handle missing values and data formatting
 
-## Data Platform Architecture
-Kaggle Dataset
-        │
-        ▼
-Python ETL
-        │
-        ▼
-Cloud PostgreSQL
-        │
-        ▼
-Data Warehouse
-        │
-        ▼
-Analytics Layer
-        │
-        ▼
-Streamlit Dashboard
+### Load
+- Insert structured data into MSSQL database
+- Design relational tables for analytics
+
+---
+
+## 🧠 Data Modeling
+The data warehouse includes:
+
+- `sales` (transaction data)
+- `products`
+- `stores`
+
+Designed to support efficient analytical queries.
+
+---
+
+## 📊 Key Analysis
+
+- Sales trend over time
+- Top-selling products ranking
+- Store-level performance comparison
+- (Planned) anomaly detection
+
+---
+
+## 📂 Project Structure
+
+retail-data-platform/  
+│  
+├── data/  
+├── etl/  
+├── sql/  
+├── dashboard/  
+└── README.md  
+
+---
+
+## 🚀 Future Improvements
+- Automate ETL with scheduling
+- Optimize SQL query performance
+- Add anomaly detection logic
+- Migrate to cloud data warehouse (future scalability)
+
+---
+
+## 💡 Business Value
+This project demonstrates how raw retail data can be transformed into meaningful insights, enabling data-driven decision making.
