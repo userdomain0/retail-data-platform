@@ -79,10 +79,12 @@ Designed to support efficient analytical queries.
 
 retail-data-platform/  
 │  
+├── config/  
 ├── data/  
 ├── etl/  
 ├── sql/  
 ├── dashboard/  
+├── doc/  
 └── README.md  
 
 ---
