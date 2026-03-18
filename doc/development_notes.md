@@ -1,8 +1,6 @@
 # 開發日誌
 ## 2026.03.11
 - 建立 github專案 retail-data-platform
-- 申請 Supabase (Cloud Database) 並且測試連線方式(成功)
-- 建立 .gitignore 篩選不上傳github資料
 - 下載 Kaggle – Grocery Sales Database 存入 data/raw 中(dataset不上傳)
 ## 2026.03.12
 - 建立 readme.md
