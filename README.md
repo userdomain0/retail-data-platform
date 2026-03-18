@@ -25,6 +25,10 @@ The goal is to demonstrate both **data engineering** and **business intelligence
 - GitHub
 
 ---
+## 🏗 資料來源
+- Kaggle / Grocery Sales Database
+- https://www.kaggle.com/datasets/andrexibiza/grocery-sales-dataset/data
+
 
 ## 🏗 Data Architecture
 
