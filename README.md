@@ -99,3 +99,13 @@ retail-data-platform/
 
 ## 💡 Business Value
 This project demonstrates how raw retail data can be transformed into meaningful insights, enabling data-driven decision making.
+
+## 📊 Dashboard Preview
+
+The Tableau dashboard provides interactive insights including:
+
+- Daily sales trends
+- Top-performing products
+- Regional store comparison
+
+(Screenshots will be added)
