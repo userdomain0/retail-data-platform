@@ -62,7 +62,7 @@ The data warehouse includes:
 - `products`
 - `stores`
 
-Designed to support efficient analytical queries.
+Designed using a star-schema-like structure to optimize analytical queries.
 
 ---
 
@@ -109,3 +109,11 @@ The Tableau dashboard provides interactive insights including:
 - Regional store comparison
 
 (Screenshots will be added)
+
+## 👨‍💻 My Contributions
+
+- Designed end-to-end data pipeline from raw data to analytics
+- Built ETL processes using Python (Pandas)
+- Modeled relational database schema in MSSQL
+- Developed analytical SQL queries for business insights
+- Created interactive dashboards using Tableau
