@@ -1,22 +1,23 @@
 from pathlib import Path
 import pandas as pd
-from db_connection import engine
+from  config.db_connection import get_db_engine
 import time
 
 start= time.time()
 BASE_DIR = Path(__file__).resolve().parent.parent
-file_path = BASE_DIR / "data" / "raw" / "sales.csv"
+file_path = BASE_DIR / "data" / "raw" / "cities.csv"
 
 df = pd.read_csv(file_path) 
-engine.dispose()
+engine = get_db_engine() 
+
+df["load_date"] = pd.Timestamp.now()
+  
 df.to_sql(
-    "sales",
+    "city",
     engine,
     if_exists="replace",
     schema="raw",
-    index=False,
-    chunksize=10000,
-    method='multi'
+    index=False
 )
 
 end = time.time()
