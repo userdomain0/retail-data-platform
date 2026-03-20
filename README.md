@@ -1,123 +1,151 @@
-# 📊 Retail Sales Intelligence Platform
+# 📊 Retail Data Platform (End-to-End)
 
-## 📌 Project Overview
-This project builds a retail data platform to analyze grocery store sales data and generate actionable business insights.
+## 📌 Overview
 
-It simulates a real-world data workflow from raw data ingestion to analytics and dashboard visualization.
+This project demonstrates an end-to-end retail data platform, covering data ingestion, data warehouse design (MSSQL), data mart modeling, and BI visualization.
 
-The goal is to demonstrate both **data engineering** and **business intelligence** capabilities.
+It simulates a real-world enterprise scenario where raw data is transformed into business-ready insights through a structured data pipeline.
 
 ---
 
-## 🎯 Business Objectives
-- Analyze sales trends across time
-- Identify top-performing products
-- Compare store performance by region
-- Detect abnormal sales patterns
+## 🏗️ Architecture
+
+```
+Data Source → Ingestion → Raw → Staging → Data Warehouse → Data Mart → BI → Notification
+```
 
 ---
 
 ## 🛠 Tech Stack
-- Python (Pandas)
-- Microsoft SQL Server (MSSQL)
-- SQL (T-SQL)
-- Tableau
-- GitHub
+
+* Python (Pandas)
+* Microsoft SQL Server (MSSQL)
+* SQL (T-SQL)
+* Tableau (Public / Desktop / Server)
+* GitHub
 
 ---
+
 ## 🏗 資料來源
-- Kaggle / Grocery Sales Database
-- https://www.kaggle.com/datasets/andrexibiza/grocery-sales-dataset/data
 
-
-## 🏗 Data Architecture
-
-Kaggle Dataset  
-↓  
-Python ETL Pipeline  
-↓  
-MSSQL Database (Data Warehouse)  
-↓  
-SQL Analytics  
-↓  
-Tableau Dashboard  
+* Kaggle / Grocery Sales Database
+* https://www.kaggle.com/datasets/andrexibiza/grocery-sales-dataset/data
 
 ---
 
-## 🔄 Data Pipeline
+## 🧱 Data Warehouse Design
 
-### Extract
-- Load raw CSV data from Kaggle dataset
+### Data Layers
 
-### Transform
-- Clean and preprocess data using Python (Pandas)
-- Handle missing values and data formatting
+* **Raw Layer**
+  Stores original source data without transformation
 
-### Load
-- Insert structured data into MSSQL database
-- Design relational tables for analytics
+* **Staging Layer**
+  Handles data cleaning, standardization, and transformation
 
----
+* **Data Warehouse Layer**
+  Implements star schema for analytical querying
 
-## 🧠 Data Modeling
-The data warehouse includes:
-
-- `sales` (transaction data)
-- `products`
-- `stores`
-
-Designed using a star-schema-like structure to optimize analytical queries.
+* **Data Mart Layer**
+  Provides pre-aggregated, BI-ready datasets
 
 ---
 
-## 📊 Key Analysis
+## ⭐ Data Model (Star Schema)
 
-- Sales trend over time
-- Top-selling products ranking
-- Store-level performance comparison
-- (Planned) anomaly detection
+### Fact Table
 
----
+* **fact_sales**
 
-## 📂 Project Structure
+### Dimension Tables
 
-retail-data-platform/  
-│  
-├── config/  
-├── data/  
-├── etl/  
-├── sql/  
-├── dashboard/  
-├── doc/  
-└── README.md  
+* **dim_product**
+* **dim_store**
+* **dim_date**
 
 ---
 
-## 🚀 Future Improvements
-- Automate ETL with scheduling
-- Optimize SQL query performance
-- Add anomaly detection logic
-- Migrate to cloud data warehouse (future scalability)
+## ⚙️ ETL Pipeline
+
+* Data ingestion using Python
+* Transformation via T-SQL stored procedures
+* Incremental loading strategy:
+
+  * Only refresh latest **180 days** of data
+* Scheduled execution via SQL Server Agent
 
 ---
 
-## 💡 Business Value
-This project demonstrates how raw retail data can be transformed into meaningful insights, enabling data-driven decision making.
+## 📈 Data Mart
 
-## 📊 Dashboard Preview
+### mart_store_product_sales
 
-The Tableau dashboard provides interactive insights including:
+Pre-aggregated table designed for BI consumption
 
-- Daily sales trends
-- Top-performing products
-- Regional store comparison
+Includes:
 
-(Screenshots will be added)
+* store_id
+* product_id
+* total_quantity
+* total_sales
 
-## 👨‍💻 My Contributions
+---
 
-- Designed end-to-end data pipeline from raw data to analytics
-- Built ETL processes using Python (Pandas)
-- Modeled relational database schema in MSSQL
-- Developed analytical SQL queries for business insights
-- Created interactive dashboards using Tableau
+## 📊 Visualization Strategy
+
+* **Tableau Public**
+  Used for portfolio demonstration and public sharing
+
+* **Tableau Desktop / Server**
+  Applicable in enterprise environments for:
+
+  * Secure data access
+  * Scheduled refresh
+  * Role-based dashboards
+
+---
+
+## 📈 Dashboard Use Cases
+
+* Product sales ranking
+* Store performance analysis
+* Category contribution analysis
+
+---
+
+## 🚀 Key Features
+
+* End-to-end data pipeline design
+* Star schema modeling (fact & dimension tables)
+* Incremental data loading for performance optimization
+* Partition-ready large dataset design
+* BI-ready data mart layer
+
+---
+
+## 🔔 Automation
+
+* SQL Server Agent for scheduling ETL jobs
+* Email / LINE notification integration
+
+---
+
+## 💡 Design Considerations
+
+* **Why staging layer?**
+  To isolate raw data and ensure clean transformations before loading into DW
+
+* **Why data mart?**
+  To improve BI performance by reducing real-time aggregation
+
+* **Why incremental load?**
+  To avoid full table scans and improve processing efficiency
+
+---
+
+## 📌 Future Improvements
+
+* Implement Slowly Changing Dimensions (SCD)
+* Add data quality validation checks
+* Integrate Airflow for workflow orchestration
+* Deploy to cloud data platform (e.g., Azure / GCP)
