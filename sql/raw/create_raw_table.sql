@@ -1,11 +1,10 @@
 USE [RetailDW]
 GO
---��ƨӷ�
+-- 資料來源
 -- Kaggle / Grocery Sales Database
 
-
---�إ߸�ƪ�/raw ��l��Ƽh
--- 1. sales ��675�U�����
+ 
+-- 1. sales 約675萬筆資料
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[raw].[sales_raw]') AND type in (N'U'))
 DROP TABLE [raw].[sales_raw]
 GO
