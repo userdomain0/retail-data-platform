@@ -116,7 +116,7 @@ FROM raw.products;
 
 DROP TABLE IF EXISTS dw.dim_category ;
 CREATE TABLE dw.dim_category (
-    product_key INT IDENTITY(1,1) PRIMARY KEY,  
+    Category_key INT IDENTITY(1,1) PRIMARY KEY,  
     [CategoryID] INT UNIQUE,   -- business key 
     [CategoryName] NVARCHAR(100), 
     load_date DATE
