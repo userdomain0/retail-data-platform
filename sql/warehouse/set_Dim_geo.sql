@@ -46,8 +46,7 @@ VALUES
 
 DROP TABLE IF EXISTS dw.dim_geography ;
 CREATE TABLE dw.dim_geography (
-	geography_key INT IDENTITY(1,1) PRIMARY KEY,
-
+	geography_key INT IDENTITY(1,1) PRIMARY KEY, 
     city_id INT,
     city_name NVARCHAR(100),
     --region_id INT,
@@ -64,6 +63,20 @@ raw.country.CountryID, raw.country.CountryName,  dw.dim_country_continent.contin
 FROM      raw.city left OUTER JOIN
                    raw.country ON raw.city.CountryID = raw.country.CountryID left OUTER JOIN
                    dw.dim_country_continent ON raw.country.CountryName = dw.dim_country_continent.country_name
+
+
+ALTER TABLE [dw].dim_customer
+ADD geography_key INT;
+
+UPDATE c
+SET c.geography_key = g.geography_key
+FROM dw.dim_customer c
+JOIN dw.dim_geography g
+    ON c.[CityID] = g.[city_id];
+
+
+
+
 
 
 SELECT * FROM dw.dim_geography
