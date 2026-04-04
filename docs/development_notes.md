@@ -20,3 +20,4 @@
 
 ## 2026.04.05
 - 新增 Dimension dim_geography 取代 city country
+- 在 dim_customer 中補入 geography_key 
