@@ -17,3 +17,6 @@
 
 - 建立 TABLE mart.product_sales
 - 原始資料的金額總計均為0,在mart中重新計算 數量 *售價 *(1-折扣)
+
+## 2026.04.05
+- 新增 Dimension dim_geography 取代 city country

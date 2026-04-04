@@ -205,7 +205,8 @@ INSERT INTO dw.dim_salesperson (
       ,[load_date]
   FROM [RetailDW].[raw].[employees]
 
-
+  /*
+  --改用dim_geography
   --6. dim_city
   DROP TABLE IF EXISTS dw.dim_city;
   CREATE TABLE dw.dim_city (
@@ -253,3 +254,5 @@ SELECT
       ,[CountryCode]
       ,[load_date]
       FROM [RetailDW].[raw].[country]
+
+     */
