@@ -1,7 +1,7 @@
 # Python
 __pycache__/
 *.pyc
-*.pyo
+*.pyo 
 
 # Virtual environment
 venv/
@@ -29,3 +29,12 @@ build/
 
 # config
 config/config.ini
+
+  
+# VSCode
+.vscode/
+
+# Visual Studio
+.vs/
+ 
+  

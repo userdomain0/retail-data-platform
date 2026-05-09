@@ -1,3 +1,6 @@
+
+USE [RetailDW]
+GO
  
 -- 資料來源
 -- Kaggle / Grocery Sales Database
