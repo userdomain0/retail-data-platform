@@ -1,14 +1,14 @@
 
-USE [RetailDW]
-GO
+USE [RetailDW];
  
 -- 資料來源
 -- Kaggle / Grocery Sales Database
+-- Create TABLE 設定資料型態,方便之後匯入資料(csv),另以python整理後匯入
 
  
 -- 1. sales 約675萬筆資料
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[raw].[sales]') AND type in (N'U'))
-DROP TABLE [raw].[sales]
+DROP TABLE [raw].[sales];
 
  
 CREATE TABLE [raw].[sales](
@@ -23,12 +23,12 @@ CREATE TABLE [raw].[sales](
 	[TransactionNumber] [varchar](50) NULL,
 	-- audit 
     load_date DATETIME DEFAULT GETDATE()
-) ON [PRIMARY]
-
+) ON [PRIMARY] ;
+  
  
 -- 2. products.csv 
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[raw].[products]') AND type in (N'U'))
-DROP TABLE [raw].products 
+DROP TABLE [raw].products ;
 
 
 CREATE TABLE raw.products  (
@@ -48,7 +48,7 @@ CREATE TABLE raw.products  (
 
  -- 3. employees.csv 
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[raw].[employees]') AND type in (N'U'))
-DROP TABLE [raw].employees
+DROP TABLE [raw].employees;
 
 --EmployeeID,FirstName,MiddleInitial,LastName,BirthDate,Gender,CityID,HireDate
 CREATE TABLE raw.employees (
@@ -66,7 +66,7 @@ CREATE TABLE raw.employees (
 
  -- 4. customers.csv 
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[raw].[customers]') AND type in (N'U'))
-DROP TABLE [raw].customers
+DROP TABLE [raw].customers;
 
 --CustomerID,FirstName,MiddleInitial,LastName,CityID,Address
 CREATE TABLE raw.customers (
@@ -83,7 +83,7 @@ CREATE TABLE raw.customers (
 
 -- 5. countries.csv 
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[raw].[country]') AND type in (N'U'))
-DROP TABLE [raw].country
+DROP TABLE [raw].country;
 
 --CountryID,CountryName,CountryCode
 
@@ -99,7 +99,7 @@ CREATE TABLE raw.country (
 
 -- 6. cities.csv 
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[raw].[city]') AND type in (N'U'))
-DROP TABLE [raw].city
+DROP TABLE [raw].city;
 
 --CityID,CityName,Zipcode,CountryID
 
@@ -117,7 +117,7 @@ CREATE TABLE raw.city (
 
 -- 7. category.csv 
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[raw].[category]') AND type in (N'U'))
-DROP TABLE [raw].category 
+DROP TABLE [raw].category ;
 
 --CateryID,CateryName
 
