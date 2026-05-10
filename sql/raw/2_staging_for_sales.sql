@@ -5,17 +5,17 @@ use RetailDW;
 資料清理過程
 CSV
  ↓
-staging.sales
+[stage].sales
  ↓（clean） 
- staging.sales_clean
+ [stage].sales_clean
  ↓
 raw.sales（partition）
 */
 
 
  
-DROP TABLE IF  EXISTS  [staging].[sales];
-CREATE TABLE  [staging].[sales](
+DROP TABLE IF  EXISTS  [stage].[sales];
+CREATE TABLE  [stage].[sales](
     sales_id BIGINT,
     salesperson_id INT,
     customer_id INT,
@@ -28,8 +28,8 @@ CREATE TABLE  [staging].[sales](
 );
 
 
-BULK INSERT  [staging].[sales]
-FROM 'C:\Users\userdomaiin\MyProject\retail-data-platform\data\raw\sales.csv'
+BULK INSERT  [stage].[sales]
+FROM 'D:\MyProject\retail-data-platform\data\raw\sales.csv'
 WITH (
     FIRSTROW = 2,
     FIELDTERMINATOR = ',',
@@ -52,11 +52,11 @@ SalesDate中包含遺失值,這會造成進行聚合問題,
 
 -- Data Quality Rules
 -- 建立欄位判斷異常資料
-ALTER TABLE [staging].[sales]
+ALTER TABLE [stage].[sales]
 ADD is_valid INT NULL, invalid_reason VARCHAR(50) NULL ;
  
 
-UPDATE [staging].[sales]
+UPDATE [stage].[sales]
    SET  is_valid =  
         CASE 
         WHEN total_price < 0 THEN 0
@@ -67,14 +67,13 @@ UPDATE [staging].[sales]
         WHEN total_price < 0 THEN 'Negative Price'
         WHEN quantity <= 0 THEN 'Invalid Quantity'
         WHEN sales_datetime IS NULL  THEN 'MISSING datetime'
-        ELSE NULL END
-GO
+        ELSE NULL END;
 
 
 -- 將清理完成的資料匯入[raw].[sales] 
 -- Kimball 經典做法:Unknown date（未知日期）設計
 -- 給定一個「預設日期」代表未知 1900-01-01
-DROP TABLE IF EXISTS staging.sales_clean
+DROP TABLE IF EXISTS stage.sales_clean;
 SELECT
     sales_id,
     salesperson_id,
@@ -90,15 +89,15 @@ SELECT
     is_valid,
     invalid_reason
 
-INTO staging.sales_clean
-FROM staging.sales
+INTO [stage].sales_clean
+FROM [stage].sales
 
 
 DROP TABLE IF EXISTS raw.sales; 
-
-GO
+ 
 CREATE TABLE raw.sales ( 
-    date_key INT NOT NULL,
+    date_key int NOT NULL,
+    date_sales date NOT NULL,
     product_id INT NOT NULL,
     customer_id INT NOT NULL,
     salesperson_id INT,
@@ -132,6 +131,7 @@ ON raw.sales (product_id, customer_id);
 
 INSERT INTO raw.sales  ( 
     date_key  ,
+    date_sales  ,
     product_id  ,
     customer_id  ,
     salesperson_id  ,
@@ -147,6 +147,7 @@ INSERT INTO raw.sales  (
     invalid_reason
 )
 SELECT  CAST(CONVERT(VARCHAR(8), [date_key], 112) AS INT)
+      , [date_key] 
       ,[product_id]
       ,[customer_id]
       ,[salesperson_id]
@@ -156,4 +157,4 @@ SELECT  CAST(CONVERT(VARCHAR(8), [date_key], 112) AS INT)
       ,[transaction_number]
       ,[is_valid]
       ,[invalid_reason]
-  FROM [RetailDW].[staging].[sales_clean]
+  FROM [RetailDW].[stage].[sales_clean]
