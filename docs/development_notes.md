@@ -21,3 +21,6 @@
 ## 2026.04.05
 - 新增 Dimension dim_geography 取代 city country
 - 在 dim_customer 中補入 geography_key 
+
+## 2026.07.12
+- 在dw.dim_category中加入一個新欄位 CategoryName_C 加入商品名稱中文
